@@ -15,6 +15,7 @@ function generateNumbers() {
 			divResult.appendChild(h1);
 		});
 		showAndHideResult();
+		document.querySelector("#startAgain").focus();
 	}).catch((error) => {
 		window.alert(error);
 	});
@@ -25,11 +26,51 @@ function showAndHideResult() {
 	document.querySelector(".lotto-numbers").classList.toggle("hidden-result");
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	document.querySelector("#generateNumbers").addEventListener("click", () => {
-		generateNumbers();
+function cleanForm() {
+	document.querySelectorAll("input").forEach((item) => { item.value = ""});
+	document.querySelector("input").focus();
+}
+
+function prestineAllInput() {
+	document.querySelectorAll("input").forEach((item) => {
+		item.classList.add("hide-hints");
 	});
+}
+
+function removePrestineAllInput() {
+	document.querySelectorAll("input").forEach((item) => {
+		item.classList.remove("hide-hints");
+	});
+}
+
+function removePrestineAfterTypingAValue() {
+	document.querySelectorAll("input").forEach((item) => {
+		item.addEventListener("keypress", (e) => {
+			item.classList.remove("hide-hints");
+		});
+	});
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+	cleanForm();
+	
+	prestineAllInput();
+	removePrestineAfterTypingAValue();
+	
+	document.querySelector("#generateNumbers").addEventListener("click", () => {
+		removePrestineAllInput();
+	});
+	
+	document.querySelector("form").addEventListener("submit", (e) => {
+		e.preventDefault();
+		generateNumbers();
+		
+	});
+	
 	document.querySelector("#startAgain").addEventListener("click", () => {
 		showAndHideResult();
+		cleanForm();
+		prestineAllInput();
 	});
+	
 });

@@ -17,7 +17,6 @@ main {
 	margin: 1rem 1rem;
 	max-width: 80%;
 }
-
 /**********/
 /* Lottery
 /**********/
@@ -43,7 +42,9 @@ main {
 	padding: 0.2rem;
 	flex-basis: 100%;
 }
-
+input:not(.hide-hints):invalid:focus {
+  outline: 2px solid red;
+}
 /**********/
 /* Result
 /**********/
