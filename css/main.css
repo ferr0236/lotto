@@ -1,0 +1,93 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 1rem;
+}
+header {
+	text-align: center;
+	background-color: cornflowerblue;
+	line-height: 3rem;
+}
+header h1 {
+	font-size: 2rem;
+	color: white;
+}
+main {
+	margin: 1rem 1rem;
+	max-width: 80%;
+}
+
+/**********/
+/* Lottery
+/**********/
+.lotto-numbers {
+	position: relative;
+	left: 10%;
+}
+.form-box {
+	display: flex;
+	flex-direction: column;
+	padding: 0.2rem 0;
+}
+
+.form-box button {
+	background-color: cornflowerblue;
+	padding: 0.2rem;
+	border: 1px black solid;
+	color: white;
+	flex-basis: 100%;
+}
+.form-box input {
+	border: 1px black solid;
+	padding: 0.2rem;
+	flex-basis: 100%;
+}
+
+/**********/
+/* Result
+/**********/
+.lotto-result  {
+	position: relative;
+	left: 10%;
+}
+.lotto-result .result-number {
+	display: flex;
+	justify-self: center; 
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.result-number h1 {
+	display: flex;
+	justify-content: center;
+	border: 0.3rem cornflowerblue solid;
+	margin: 0.5rem 0.5rem;
+	width: 2rem;
+}
+.hidden-result {
+	display: none;
+}
+
+/**********/
+/* Bigger Screen
+/**********/
+@media (min-width: 700px) {
+	* {
+		font-size: 1.5rem;
+	}
+	.form-box {
+		display: flex;
+		flex-direction: row;
+		padding: 0.2rem 0;
+	}
+	.form-box label {
+		flex-grow: 0;
+		flex-shrink: 0;
+		flex-basis: 12rem;
+	}
+	.result-number h1 {
+		font-size: 5rem;
+		width: 6rem;
+	}
+}
