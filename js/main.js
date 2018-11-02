@@ -1,21 +1,33 @@
 function generateNumbers() {
 	fetch("https://davidst.edumedia.ca/mad9014/nums.php", {
 		method: 'POST',
-		body: Array.prototype.slice.call(document.querySelectorAll("input")).reduce((form, item) => {form.append(item.name,item.value); return form;}, new FormData())
+		body: Array.prototype.slice.call(document.querySelectorAll("input")).reduce((form, item) => {
+			form.append(item.name, item.value);
+			return form;
+		}, new FormData())
 	}).then((response) => {
 		return response.json();
 	}).then((data) => {
-		let divResult = document.querySelector(".result-number");
-		while (divResult.firstChild) {
-    		divResult.removeChild(divResult.firstChild);
+		if (data.code != 0) {
+			window.alert(data.message);
+		} else {
+			let divResult = document.querySelector(".result-number");
+
+			// Remove all numbers that had been created before
+			while (divResult.firstChild) {
+				divResult.removeChild(divResult.firstChild);
+			}
+
+			// Add all generated numbers inside the div element
+			data.numbers.forEach((number) => {
+				let h1 = document.createElement("h1");
+				h1.textContent = number;
+				divResult.appendChild(h1);
+			});
+
+			showAndHideResult();
+			document.querySelector("#startAgain").focus();
 		}
-		data.numbers.forEach((number) => {
-			let h1 = document.createElement("h1");
-			h1.textContent = number;
-			divResult.appendChild(h1);
-		});
-		showAndHideResult();
-		document.querySelector("#startAgain").focus();
 	}).catch((error) => {
 		window.alert(error);
 	});
@@ -27,7 +39,9 @@ function showAndHideResult() {
 }
 
 function cleanForm() {
-	document.querySelectorAll("input").forEach((item) => { item.value = ""});
+	document.querySelectorAll("input").forEach((item) => {
+		item.value = ""
+	});
 	document.querySelector("input").focus();
 }
 
@@ -53,24 +67,24 @@ function removePrestineAfterTypingAValue() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	cleanForm();
-	
+
 	prestineAllInput();
 	removePrestineAfterTypingAValue();
-	
+
 	document.querySelector("#generateNumbers").addEventListener("click", () => {
 		removePrestineAllInput();
 	});
-	
+
 	document.querySelector("form").addEventListener("submit", (e) => {
 		e.preventDefault();
 		generateNumbers();
-		
+
 	});
-	
+
 	document.querySelector("#startAgain").addEventListener("click", () => {
 		showAndHideResult();
 		cleanForm();
 		prestineAllInput();
 	});
-	
+
 });

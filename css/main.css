@@ -1,22 +1,26 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
 	font-size: 1rem;
 }
+
 header {
 	text-align: center;
 	background-color: cornflowerblue;
 	line-height: 3rem;
 }
+
 header h1 {
 	font-size: 2rem;
 	color: white;
 }
+
 main {
 	margin: 1rem 1rem;
 	max-width: 80%;
 }
+
 /**********/
 /* Lottery
 /**********/
@@ -24,6 +28,7 @@ main {
 	position: relative;
 	left: 10%;
 }
+
 .form-box {
 	display: flex;
 	flex-direction: column;
@@ -37,24 +42,28 @@ main {
 	color: white;
 	flex-basis: 100%;
 }
+
 .form-box input {
 	border: 1px black solid;
 	padding: 0.2rem;
 	flex-basis: 100%;
 }
+
 input:not(.hide-hints):invalid:focus {
-  outline: 2px solid red;
+	outline: 2px solid red;
 }
+
 /**********/
 /* Result
 /**********/
-.lotto-result  {
+.lotto-result {
 	position: relative;
 	left: 10%;
 }
+
 .lotto-result .result-number {
 	display: flex;
-	justify-self: center; 
+	justify-self: center;
 	justify-content: center;
 	flex-wrap: wrap;
 }
@@ -66,6 +75,7 @@ input:not(.hide-hints):invalid:focus {
 	margin: 0.5rem 0.5rem;
 	width: 2rem;
 }
+
 .hidden-result {
 	display: none;
 }
@@ -77,16 +87,19 @@ input:not(.hide-hints):invalid:focus {
 	* {
 		font-size: 1.5rem;
 	}
+
 	.form-box {
 		display: flex;
 		flex-direction: row;
 		padding: 0.2rem 0;
 	}
+
 	.form-box label {
 		flex-grow: 0;
 		flex-shrink: 0;
 		flex-basis: 12rem;
 	}
+
 	.result-number h1 {
 		font-size: 5rem;
 		width: 6rem;
